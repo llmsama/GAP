@@ -33,6 +33,11 @@ def solve_OPT(c,v,p,s,sequence):
     return M.objVal, result
 
 #main part of the GAP Algorithm
+#c is the capacity of bins
+#v is the reward 
+#p is the probability of each type
+#sequence is the arriving sequence
+#D is the discretization parameter used to disretize the continuous interval
 
 def GAP_Algorithm(c,v,p,sequence,empty_run,gamma,D,epsilon):
     m=np.shape(c)[0]
