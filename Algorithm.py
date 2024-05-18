@@ -46,7 +46,6 @@ def GAP_Algorithm(c,v,p,sequence,empty_run,gamma,D,epsilon):
     c_left=c.copy()
     v_total=0
     
-    
     for run in range(empty_run):
 
         t0=int(sequence[run][0])
@@ -101,7 +100,7 @@ def GAP_Algorithm(c,v,p,sequence,empty_run,gamma,D,epsilon):
         
         if i==0:
 
-            if np.sum(F[j_star][i%2]>=gamma)=0:
+            if np.sum(F[j_star][i%2]>=gamma) == 0:
                 theta[j_star]=int(D*c_left[j]-1)
             else:
                 theta[j_star]=int(np.argwhere(F[j_star][i%2]>=gamma)[0])
