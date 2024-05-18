@@ -5,8 +5,7 @@ from gurobipy import Model,quicksum,GRB
 import matplotlib.pyplot as plt
 import time
 import scipy.stats as stats
-from Data-generation import *
-
+from Data_generation import *
 
 
 #The Lp Algorithm
@@ -99,8 +98,6 @@ def GAP_Algorithm(c,v,p,sequence,empty_run,gamma,D,epsilon):
         accept=np.zeros(m)
         lost=0
         
-
-                
         
         if i==0:
 

@@ -35,8 +35,8 @@ runs the GAP algortihm with regard to different values of bin capacity k.
 ```run_gamma.py```
 runs the GAP algortihm with regard to different values of gamma.
 
-```run_rou.py```
-runs the GAP algortihm with regard to different values of rou.
+```run_rho.py```
+runs the GAP algortihm with regard to different values of rho.
 
 ```run_T0.py```
 runs the GAP algortihm with regard to different values of empty run length T0.
