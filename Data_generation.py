@@ -37,6 +37,7 @@ def generate_ber(Total_type):
         p=random.uniform(0,1)
         parameter[i]=p
     return parameter
+
 #generate a sequence of bernoulli arrival, with total length T
 def simulation_ber(p,paramter,Total_type,T):
     sequence=np.zeros((T,2))
