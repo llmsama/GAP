@@ -347,8 +347,8 @@ def simulation_truncnorm(p,parameter,Total_type,T):
 # In[3]:
 
 
-def run_T(dis='ber'):
-    testnum=20
+def run_T(dis='ber', SYN=True):
+    testnum=1
     testiter=5
     
     Time=np.arange(500,1001,100)
@@ -397,12 +397,16 @@ def run_T(dis='ber'):
         if T==900:
             T=901
         
-        
-    
         for x in range(testnum):
             sequence=np.zeros((testiter,T,2))
-            p=np.loadtxt('Instances/Instance10/Bin10/P/p'+str(x))
-            v=np.loadtxt('Instances/Instance10/Bin10/V/v'+str(x))
+            if not SYN:
+                p=np.loadtxt('Instances/meituan_p')
+                update_p = p/sum(p)
+                p = update_p
+                v=np.loadtxt('Instances/meituan_v')
+            else:
+                p=np.loadtxt('Instances/Instance10/Bin10/P/p'+str(x))
+                v=np.loadtxt('Instances/Instance10/Bin10/V/v'+str(x))
             #p=generate_p(10)
             #v=generate_v(10,10)
             if dis=='truncnorm':
@@ -606,7 +610,7 @@ def run_k(dis='ber'):
 
             for test in range(testiter):
                 c=np.array([k,k,k,k,k,k,k,k,k,k],dtype=np.float64)
-                
+
                 if dis=='truncnorm':
                     sequence[test]=simulation_truncnorm(p,parameter,10,500)
                    
@@ -1394,19 +1398,19 @@ def run_rou(dis='ber'):
 # In[8]:
 
 
-run_T(dis='ber')
+# run_T(dis='ber', SYN=False)
 
 
 # In[9]:
 
 
-run_T(dis='truncnorm')
+run_T(dis='truncnorm', SYN=False)
 
 
 # In[10]:
 
 
-run_T(dis='uni')
+run_T(dis='uni', SYN=False)
 
 
 # In[16]:
