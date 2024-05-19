@@ -606,6 +606,7 @@ def run_k(dis='ber'):
 
             for test in range(testiter):
                 c=np.array([k,k,k,k,k,k,k,k,k,k],dtype=np.float64)
+                
                 if dis=='truncnorm':
                     sequence[test]=simulation_truncnorm(p,parameter,10,500)
                    
@@ -646,8 +647,6 @@ def run_k(dis='ber'):
 
             for test in range(testiter):
                 c=np.array([k,k,k,k,k,k,k,k,k,k],dtype=np.float64)
-
-
                 GAP_baseline[test+x*testiter]=GAP_Algorithm(c,v,p,sequence[test],100,1-1/(int(k)**(1/2)),10,0)
                 Ratio_GAP_baseline[test+x*testiter]=GAP_baseline[test+x*testiter]/LP[test+x*testiter]
                 
