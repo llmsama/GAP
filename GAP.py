@@ -542,8 +542,8 @@ def run_T(dis='ber', SYN=True):
 # In[4]:
 
 
-def run_k(dis='ber'):
-    testnum=20
+def run_k(dis='ber', SYN=True):
+    testnum=1
     testiter=5
 
     GAP_f=np.zeros(testnum*testiter)
@@ -589,8 +589,14 @@ def run_k(dis='ber'):
 
         for x in range(testnum):
             sequence=np.zeros((testiter,500,2))
-            p=np.loadtxt('Instances/Instance'+str(k)+'/Bin10/P/p'+str(x))
-            v=np.loadtxt('Instances/Instance'+str(k)+'/Bin10/V/v'+str(x))
+            if not SYN:
+                p=np.loadtxt('Instances/meituan_p')
+                update_p = p/sum(p)
+                p = update_p
+                v=np.loadtxt('Instances/meituan_v')
+            else:
+                p=np.loadtxt('Instances/Instance'+str(k)+'/Bin10/P/p'+str(x))
+                v=np.loadtxt('Instances/Instance'+str(k)+'/Bin10/V/v'+str(x))
 
             #p=generate_p(10)
             #v=generate_v(10,10)
@@ -1404,13 +1410,13 @@ def run_rou(dis='ber'):
 # In[9]:
 
 
-run_T(dis='truncnorm', SYN=False)
+# run_T(dis='truncnorm', SYN=False)
 
 
 # In[10]:
 
 
-run_T(dis='uni', SYN=False)
+# run_T(dis='uni', SYN=False)
 
 
 # In[16]:
@@ -1424,3 +1430,8 @@ run_T(dis='uni', SYN=False)
 
 
 
+
+
+run_k(dis='ber', SYN=False)
+run_k(dis='uni', SYN=False)
+run_k(dis='truncnorm', SYN=False)
