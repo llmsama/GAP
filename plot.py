@@ -93,7 +93,8 @@ def plot_one(filename):
             x.append(float(line[0]))
             for i in range(len(algo_name_list)):
                 r = line[i+1]
-                res[i].append(float(r))
+                # res[i].append(float(r))
+                res[i].append(float(r.split('_')[0]))
                 # err[i].append(float(r[1]))
         print(x)
         print(res)
@@ -160,6 +161,14 @@ def plot_one_norcp(filename):
         plt.close()
 
 if __name__ == '__main__':
+    # plot_one('ber-ratio-K1f')
+    plot_one('truncnorm-ratio-K1f')
+    # plot_one('truncnorm-ratio-Tf')
+
+    # plot_one('uni-ratio-K1f')
+    # plot_one('uni-ratio-Tf')
+    # plot_one('ber-ratio-Tf')
+    # plot_one('ber-ratio-K1f')
     # plot_one('diffe/bere')
     # plot_one('diffe/unie')
     # plot_one('diffe/TNe')
@@ -171,7 +180,7 @@ if __name__ == '__main__':
     #plot_one('diffK/r_berK')
     #plot_one('diffK/r_uniK')
     #plot_one('diffK/r_TNK')
-    plot_errbar('truncnorm-ratio-T0.txt')
+    # plot_errbar('truncnorm-ratio-T0.txt')
     
     # plot_one('diffT/r_ber')
     # plot_one('diffT/r_uni')

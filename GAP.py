@@ -519,7 +519,7 @@ def run_T(dis='ber', SYN=True):
     f1.close()
     
     f2=open(dis+'-ratio-Tf','w+')
-    f2.write('T FF'+'\n')
+    f2.write('T GAP* GAP0.5 GAP0.8 Greedy FirstFit'+'\n')
     for i in range(len_Time):
         f2.write(str(500+i*100)+' ')
         f2.write(str(Ra_baseline[i])+'_'+str(S_baseline[i])+' ')
@@ -543,8 +543,8 @@ def run_T(dis='ber', SYN=True):
 
 
 def run_k(dis='ber', SYN=True):
-    testnum=1
-    testiter=5
+    testnum=5
+    testiter=20
 
     GAP_f=np.zeros(testnum*testiter)
     GAP_e=np.zeros(testnum*testiter)
@@ -711,7 +711,7 @@ def run_k(dis='ber', SYN=True):
     
         
     f2=open(dis+'-ratio-K1f','w+')
-    f2.write('K FF'+'\n')
+    f2.write('K GAP* GAP0.5 GAP0.8 Greedy FirstFit'+'\n')
     for i in range(len_K):
         f2.write(str(2+i)+' ')
         f2.write(str(Ra_baseline[i])+'_'+str(S_baseline[i])+' ')
@@ -1432,6 +1432,6 @@ def run_rou(dis='ber'):
 
 
 
-run_k(dis='ber', SYN=False)
-run_k(dis='uni', SYN=False)
+# run_k(dis='ber', SYN=False)
+# run_k(dis='uni', SYN=False)
 run_k(dis='truncnorm', SYN=False)
