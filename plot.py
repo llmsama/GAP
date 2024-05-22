@@ -162,11 +162,11 @@ def plot_one_norcp(filename):
 
 if __name__ == '__main__':
     # plot_one('ber-ratio-K1f')
+    plot_one('truncnorm-ratio-Tf')
     plot_one('truncnorm-ratio-K1f')
-    # plot_one('truncnorm-ratio-Tf')
 
-    # plot_one('uni-ratio-K1f')
-    # plot_one('uni-ratio-Tf')
+    plot_one('uni-ratio-K1f')
+    plot_one('uni-ratio-Tf')
     # plot_one('ber-ratio-Tf')
     # plot_one('ber-ratio-K1f')
     # plot_one('diffe/bere')

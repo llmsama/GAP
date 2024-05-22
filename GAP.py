@@ -348,8 +348,8 @@ def simulation_truncnorm(p,parameter,Total_type,T):
 
 
 def run_T(dis='ber', SYN=True):
-    testnum=1
-    testiter=5
+    testnum=5
+    testiter=20
     
     Time=np.arange(500,1001,100)
     len_Time = len(Time)
@@ -403,7 +403,7 @@ def run_T(dis='ber', SYN=True):
                 p=np.loadtxt('Instances/meituan_p')
                 update_p = p/sum(p)
                 p = update_p
-                v=np.loadtxt('Instances/meituan_v')
+                v=np.loadtxt('Instances/meituan_v3')
             else:
                 p=np.loadtxt('Instances/Instance10/Bin10/P/p'+str(x))
                 v=np.loadtxt('Instances/Instance10/Bin10/V/v'+str(x))
@@ -593,7 +593,7 @@ def run_k(dis='ber', SYN=True):
                 p=np.loadtxt('Instances/meituan_p')
                 update_p = p/sum(p)
                 p = update_p
-                v=np.loadtxt('Instances/meituan_v')
+                v=np.loadtxt('Instances/meituan_v3')
             else:
                 p=np.loadtxt('Instances/Instance'+str(k)+'/Bin10/P/p'+str(x))
                 v=np.loadtxt('Instances/Instance'+str(k)+'/Bin10/V/v'+str(x))
@@ -1434,4 +1434,28 @@ def run_rou(dis='ber'):
 
 # run_k(dis='ber', SYN=False)
 # run_k(dis='uni', SYN=False)
-run_k(dis='truncnorm', SYN=False)
+# run_k(dis='truncnorm', SYN=False)
+
+def filter_reward_table():
+    a = np.loadtxt('Instances/order_type_startpoint.txt')
+    b = np.loadtxt('Instances/courier_type_point.txt')
+    print(a)
+    print(b)
+    def euclidean_distance(x, y):
+        return np.abs(x[0]-y[0])+np.abs(x[1]-y[1])
+
+    reward_table = np.loadtxt('Instances/meituan_v')
+    threshold = 3
+
+    for i in range(len(a)):
+        for j in range(len(b)):
+            if euclidean_distance(a[i], b[j]) > threshold:
+                reward_table[i][j] = 0
+    np.savetxt('Instances/meituan_v3', reward_table, fmt='%.2f')
+
+
+if __name__ == '__main__':
+    run_T(dis='uni', SYN=False)
+    run_T(dis='truncnorm', SYN=False)
+    run_k(dis='uni', SYN=False)
+    run_k(dis='truncnorm', SYN=False)
