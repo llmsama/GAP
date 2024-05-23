@@ -349,7 +349,7 @@ def simulation_truncnorm(p,parameter,Total_type,T):
 
 def run_T(dis='ber', SYN=True):
     testnum=5
-    testiter=20
+    testiter=1
     
     Time=np.arange(500,1001,100)
     len_Time = len(Time)
@@ -453,7 +453,7 @@ def run_T(dis='ber', SYN=True):
             for test in range(testiter):
                 
 
-                GAP_f[test+x*testiter]=GAP_Algorithm(c,v,p,sequence[test],100,0.5,10,0)
+                # GAP_f[test+x*testiter]=GAP_Algorithm(c,v,p,sequence[test],100,0.5,10,0)
                 Ratio_GAP_f[test+x*testiter]=GAP_f[test+x*testiter]/LP[test+x*testiter]
             
             np.random.seed(1)
@@ -462,19 +462,19 @@ def run_T(dis='ber', SYN=True):
                 
 
 
-                GAP_e[test+x*testiter]=GAP_Algorithm(c,v,p,sequence[test],100,0.8,10,0)
+                # GAP_e[test+x*testiter]=GAP_Algorithm(c,v,p,sequence[test],100,0.8,10,0)
                 Ratio_GAP_e[test+x*testiter]=GAP_e[test+x*testiter]/LP[test+x*testiter]
             
             np.random.seed(1)
             for test in range(testiter):
                 
 
-                GAP_baseline[test+x*testiter]=GAP_Algorithm(c,v,p,sequence[test],100,1-1/(10**(1/2)),10,0)
+                # GAP_baseline[test+x*testiter]=GAP_Algorithm(c,v,p,sequence[test],100,1-1/(10**(1/2)),10,0)
                 Ratio_GAP_baseline[test+x*testiter]=GAP_baseline[test+x*testiter]/LP[test+x*testiter]
 
 
 
-                Greedy[test+x*testiter]=Greedy_Algorithm(v,c,sequence[test]) 
+                # Greedy[test+x*testiter]=Greedy_Algorithm(v,c,sequence[test]) 
                 Ratio_Greedy[test+x*testiter]=Greedy[test+x*testiter]/LP[test+x*testiter]
 
         
@@ -526,7 +526,7 @@ def run_T(dis='ber', SYN=True):
         f2.write(str(Ra_GAP_f[i])+'_'+str(S_GAP_f[i])+' ')
         f2.write(str(Ra_GAP_e[i])+'_'+str(S_GAP_e[i])+' ')
         f2.write(str(Ra_Greedy[i])+'_'+str(S_Greedy[i])+' ')
-        f2.write(str(Ra_FF[i])+'_'+str(R_FF[i])+'\n')
+        f2.write(str(Ra_FF[i])+'_'+str(S_FF[i])+'\n')
     f2.close()
             
         
@@ -1455,7 +1455,7 @@ def filter_reward_table():
 
 
 if __name__ == '__main__':
-    run_T(dis='uni', SYN=False)
+    # run_T(dis='uni', SYN=False)
     run_T(dis='truncnorm', SYN=False)
-    run_k(dis='uni', SYN=False)
-    run_k(dis='truncnorm', SYN=False)
+    # run_k(dis='uni', SYN=False)
+    # run_k(dis='truncnorm', SYN=False)
